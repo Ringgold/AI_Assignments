@@ -8,8 +8,8 @@ public class MainFile {
 	static ArrayList<CurrentSpace> stack = new ArrayList<>();
 	static int steps = 0;
 	//the preset matrix size
-	static int row = 2;
-	static int col= 3;
+	static final int row = 2;
+	static final int col= 3;
 	//the coordinates of the empty puzzle
 	static int fx = 0;
 	static int fy = 0;
@@ -51,8 +51,24 @@ public class MainFile {
 		} else {
 			System.out.println("The goal state is not found!");
 		}
+		// BFS Finished
+        initAll();
+        newSpace = new CurrentSpace(space, 0, 0, 0);
+        System.out.println("UCS finished at the explored size of: " + UCS(newSpace));
 	
 	}
+
+	//init all of the variables need to execute the search
+	public static void initAll(){
+        queue.clear();
+        explored.clear();
+        stack.clear();
+        space = initSpace(space);
+        steps = 0;
+        fx = 0;
+        fy = 0;
+        goalFound = false;
+    }
 	
 	public static int[][] setSpace(int [][]temp){
 		//initialize the matrix first
@@ -275,17 +291,36 @@ public class MainFile {
 		}
 		return explored.size();
 	}
-	
-	public static void UCS(){
-		
+	/*
+	function UNIFORM-COST-SEARCH(problem) returns a solution, or failure
+ node ← a node with STATE = problem.INITIAL-STATE, PATH-COST = 0
+ frontier ← a priority queue ordered by PATH-COST, with node as the only element
+ explored ← an empty set
+ loop do
+   if EMPTY?(frontier) then return failure
+   node ← POP(frontier) // chooses the lowest-cost node in frontier
+   if problem.GOAL-TEST(node.STATE) then return SOLUTION(node)
+   add node.STATE to explored
+   for each action in problem.ACTIONS(node.STATE) do
+                  child ← CHILD-NODE(problem,node,action)
+      if child.STATE is not in explored or frontier then
+         frontier ← INSERT(child,frontier)
+      else if child.STATE is in frontier with higher PATH-COST then
+         replace that frontier node with child
+	 */
+	public static int UCS(CurrentSpace tempSpace){
+        //TODO
+		return explored.size();
 	}
 	
-	public static void DFS(){
-		
+	public static int DFS(CurrentSpace tempSpace){
+	    //TODO
+        return explored.size();
 	}
 	
-	public static void ID(){
-		
-	}
+	public static int ID(CurrentSpace tempSpace){
+	    //TODO
+        return explored.size();
+    }
 	
 }

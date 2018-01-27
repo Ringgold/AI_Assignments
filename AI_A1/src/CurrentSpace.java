@@ -21,4 +21,15 @@ public class CurrentSpace {
 		this.ID = ID;
 		this.preID = preID;
 	}
+
+	public CurrentSpace(int [][]tempCurSpace, int ID, int preID, int cost){
+		for (int x = 0; x < MainFile.row; x++){
+			for (int y = 0; y < MainFile.col; y++ ){
+				curSpace[x][y] = tempCurSpace[x][y];
+			}
+		}
+		this.ID = ID;
+		this.preID = preID;
+		this.cost = cost;
+	}
 }
