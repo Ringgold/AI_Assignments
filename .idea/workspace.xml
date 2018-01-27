@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78b90c18-5f82-4745-985a-ba4bbf301568" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AI_A1/bin/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/AI_A1/bin/CurrentSpace.class" afterPath="$PROJECT_DIR$/AI_A1/bin/CurrentSpace.class" />
-      <change beforePath="$PROJECT_DIR$/AI_A1/bin/MainFile.class" afterPath="$PROJECT_DIR$/AI_A1/bin/MainFile.class" />
-      <change beforePath="$PROJECT_DIR$/AI_A1/src/CurrentSpace.java" afterPath="$PROJECT_DIR$/AI_A1/src/CurrentSpace.java" />
       <change beforePath="$PROJECT_DIR$/AI_A1/src/MainFile.java" afterPath="$PROJECT_DIR$/AI_A1/src/MainFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/AI_A1/bin/" />
@@ -33,14 +27,21 @@
       <file leaf-file-name="MainFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AI_A1/src/MainFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-501">
-              <caret line="270" column="21" lean-forward="true" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+            <state relative-caret-position="317">
+              <caret line="218" column="51" lean-forward="true" selection-start-line="218" selection-start-column="51" selection-end-line="218" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>findZero</find>
+      <find>0 1 2</find>
+      <find>Need To back 1 step</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,11 +59,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-119" />
-    <option name="y" value="115" />
-    <option name="width" value="1400" />
-    <option name="height" value="997" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1128" />
+    <option name="y" value="17" />
+    <option name="width" value="1360" />
+    <option name="height" value="1359" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -246,8 +247,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="2582" height="1402" extended-state="7" />
-    <editor active="true" />
+    <frame x="-11" y="-11" width="2582" height="1402" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -257,12 +257,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12919897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22394487" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988802" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988802" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24979919" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31485945" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -296,8 +296,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AI_A1/src/MainFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501">
-          <caret line="270" column="21" lean-forward="true" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+        <state relative-caret-position="317">
+          <caret line="218" column="51" lean-forward="true" selection-start-line="218" selection-start-column="51" selection-end-line="218" selection-end-column="51" />
           <folding />
         </state>
       </provider>
