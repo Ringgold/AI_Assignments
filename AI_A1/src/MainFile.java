@@ -61,14 +61,29 @@ public class MainFile {
         tempStack.push(newSpace);
         explored.add(space);
         sequence.add(newSpace);
-        System.out.println("DFS finished at the explored size of: " + DFS());
-        if (goalFound){
-            for (int i = 0; i<= sequence.size()-1; i++){
-                System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
-                System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
-                System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
-            }
-        }
+//        System.out.println("DFS finished at the explored size of: " + DFS());
+//        if (goalFound){
+//            for (int i = 0; i<= sequence.size()-1; i++){
+//                System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
+//                System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
+//                System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
+//            }
+//        }
+		for (int x=0; x<4; x++){
+			System.out.println("ID finished at the explored size of: " + ID(x) + " and depth of " + x);
+			if (goalFound){
+				for (int i = 0; i<= sequence.size()-1; i++){
+					System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
+					System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
+					System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
+				}
+			}
+			initAll();
+			newSpace = new CurrentSpace(space, 0, 0, 0);
+			tempStack.push(newSpace);
+			explored.add(space);
+			sequence.add(newSpace);
+		}
 	}
 
 	//init all of the variables need to execute the search
@@ -385,9 +400,76 @@ public class MainFile {
         return explored.size();
 	}
 	
-	public static int ID(CurrentSpace tempSpace){
-	    //TODO
-        return explored.size();
+	public static int ID(int depth){
+		int curDepth = 0;
+		boolean newFound = false;
+		while (!tempStack.isEmpty()){
+			CurrentSpace temp = tempStack.pop();//get it
+			tempStack.push(temp);
+			CurrentSpace currentSpace = new CurrentSpace(temp.curSpace, temp.ID, temp.preID);
+			findZero(currentSpace.curSpace);
+			System.out.println("Popped!");
+			System.out.println(currentSpace.curSpace[0][0]+ " " + currentSpace.curSpace[0][1] + " " + currentSpace.curSpace[0][2]);
+			System.out.println(currentSpace.curSpace[1][0]+ " " + currentSpace.curSpace[1][1] + " " + currentSpace.curSpace[1][2]);
+			findAdjacent();
+			findOrderBFS(currentSpace.curSpace);
+
+			for (int n=0; n<=4; n++) {
+				if (xP[n] != -1 && yP[n] != -1) {
+					//Check the depth requirement first
+					if (depth <= curDepth){
+						break;
+					}
+					CurrentSpace newSpace = Swap(xP[n],yP[n],fx,fy,currentSpace);//swap to get a potential new state
+					//First Check if this is the destination
+					if (checkEqual(newSpace.curSpace, destination)){
+						System.out.println("ID Goal State Acquired!");
+						System.out.println(newSpace.curSpace[0][0]+ " " + newSpace.curSpace[0][1] + " " + newSpace.curSpace[0][2]);
+						System.out.println(newSpace.curSpace[1][0]+ " " + newSpace.curSpace[1][1] + " " + newSpace.curSpace[1][2]);
+						goalFound = true;
+						explored.add(newSpace.curSpace);
+						sequence.add(newSpace);
+						curDepth++;
+						newSpace.preID = currentSpace.ID;//add the address of the previous state
+						newSpace.ID = explored.size()-1;
+						return explored.size();
+					} else {
+						//Not found in the explored queue, need to start a new DFS search from here and add this into tempStack
+						if (checkExplored(newSpace.curSpace, explored) == false){
+							newFound = true;
+							tempStack.push(newSpace);//add as record stack
+							explored.add(newSpace.curSpace);//add to visited
+							sequence.add(newSpace);//add to the sequence record
+							curDepth++;
+							newSpace.preID = currentSpace.ID;//add the address of the previous state
+							newSpace.ID = explored.size()-1;
+							System.out.println("Stacked!");
+							System.out.println(newSpace.curSpace[0][0]+ " " + newSpace.curSpace[0][1] + " " + newSpace.curSpace[0][2]);
+							System.out.println(newSpace.curSpace[1][0]+ " " + newSpace.curSpace[1][1] + " " + newSpace.curSpace[1][2]);
+							//At this stage, this state is confirmed a potential state and is not the desired answer,
+							//need to break the loop and continue the DFS
+							break;
+						} else {
+							newFound = false;
+						}
+					}
+				}
+			}
+			if (!newFound){
+				System.out.println("Need to go back 1 step");
+				tempStack.pop();
+				curDepth--;
+				newFound = false;
+			}
+			if (depth <= curDepth){
+				System.out.println("Need to go back 1 step");
+				tempStack.pop();
+				curDepth--;
+			}
+		}
+
+
+		return explored.size();
     }
 	
 }
