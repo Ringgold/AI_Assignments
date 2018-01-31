@@ -6,6 +6,9 @@ public class MainFile {
     static Stack<CurrentSpace> tempStack = new Stack<>();
 	static ArrayList<Object> explored = new ArrayList<>();
 	static ArrayList<CurrentSpace> sequence = new ArrayList<>();
+	static ArrayList<CurrentSpace> final1 = new ArrayList<>();
+	static ArrayList<CurrentSpace> final2 = new ArrayList<>();
+	static ArrayList<CurrentSpace> final3 = new ArrayList<>();
 	static int steps = 0;
 	//the preset matrix size
 	static final int row = 2;
@@ -32,22 +35,30 @@ public class MainFile {
 		if (goalFound){
 			int index = explored.size()-1;
 			//System.out.println("The Following are the routine from GOAL to the STARTING state:");
-//			while (true){
-//				int [][]temp = stack.get(index).curSpace;
+			while (true){
+//				int [][]temp = sequence.get(index).curSpace;
+				CurrentSpace tempo = sequence.get(index);
+				final1.add(tempo);
 //				System.out.println(temp[0][0]+ " " + temp[0][1] + " " + temp[0][2]);
 //				System.out.println(temp[1][0]+ " " + temp[1][1] + " " + temp[1][2]);
-//				System.out.println("So far cost: "+stack.get(index).cost + " Previous ID: "+stack.get(index).preID + " Current ID: "+ stack.get(index).ID);
-//				if (stack.get(index).preID < 0){
-//					break;
-//				} else {
-//					index = stack.get(index).preID;
-//				}
-//			}
-			for (int i = 0; i<= index; i++){
-				System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
-				System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
-				System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
+//				System.out.println("So far cost: "+sequence.get(index).cost + " Previous ID: "+sequence.get(index).preID + " Current ID: "+ sequence.get(index).ID);
+				if (tempo.preID < 0){
+					break;
+				} else {
+					index = tempo.preID;
+				}
 			}
+			for (int i = final1.size()-1; i >= 0; i--){
+				System.out.println("");
+				System.out.println(final1.get(i).curSpace[0][0]+ " " + final1.get(i).curSpace[0][1] + " " + final1.get(i).curSpace[0][2]);
+				System.out.println(final1.get(i).curSpace[1][0]+ " " + final1.get(i).curSpace[1][1] + " " + final1.get(i).curSpace[1][2]);
+			}
+			System.out.println("Since it is unit step cost, BFS = UCS, cost =" + (final1.size()-1));
+//			for (int i = 0; i<= index; i++){
+//				System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
+//				System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
+//				System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
+//			}
 		} else {
 			System.out.println("The goal state is not found!");
 		}
@@ -55,22 +66,54 @@ public class MainFile {
         //initAll();
         //newSpace = new CurrentSpace(space, 0, 0, 0);
         //System.out.println("UCS finished at the explored size of: " + UCS(newSpace));
+
         //Start DFS
         initAll();
-        newSpace = new CurrentSpace(space, 0, 0, 0);
+        newSpace = new CurrentSpace(space, 0, -1, 0);
         tempStack.push(newSpace);
         explored.add(space);
         sequence.add(newSpace);
         System.out.println("DFS finished at the explored size of: " + DFS());
-        if (goalFound){
-            for (int i = 0; i<= sequence.size()-1; i++){
-                System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
-                System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
-                System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
-            }
-        }
+//        if (goalFound){
+//			int index = explored.size()-1;
+//			while (true){
+//				CurrentSpace tempo = sequence.get(index);
+//				final2.add(tempo);
+//
+//				if (tempo.preID < 0){
+//					break;
+//				}  else {
+//					index = tempo.preID;
+//				}
+//			}
+//			int counter = 0;
+//			int count = 0;
+//			for (int i = final2.size()-1; i >= 0; i--){
+//				counter ++;
+//				if (counter <= 11){
+//					System.out.println("");
+//					System.out.println(final2.get(i).curSpace[0][0]+ " " + final2.get(i).curSpace[0][1] + " " + final2.get(i).curSpace[0][2]);
+//					System.out.println(final2.get(i).curSpace[1][0]+ " " + final2.get(i).curSpace[1][1] + " " + final2.get(i).curSpace[1][2]);
+//
+//				} else {
+//					counter = 0;
+//					System.out.println("\\\\\\" + count);
+//					count ++;
+//					System.out.println("");
+//					System.out.println(final2.get(i).curSpace[0][0]+ " " + final2.get(i).curSpace[0][1] + " " + final2.get(i).curSpace[0][2]);
+//					System.out.println(final2.get(i).curSpace[1][0]+ " " + final2.get(i).curSpace[1][1] + " " + final2.get(i).curSpace[1][2]);
+//				}
+//
+//			}
+//			System.out.println("DFS total cost is =" + final2.size());
+////            for (int i = 0; i<= sequence.size()-1; i++){
+////                System.out.println(sequence.get(i).curSpace[0][0]+ " " + sequence.get(i).curSpace[0][1] + " " + sequence.get(i).curSpace[0][2]);
+////                System.out.println(sequence.get(i).curSpace[1][0]+ " " + sequence.get(i).curSpace[1][1] + " " + sequence.get(i).curSpace[1][2]);
+////                System.out.println("cost: "+sequence.get(i).cost+ " ID: " +sequence.get(i).ID  +" preID: "+ sequence.get(i).preID);
+////            }
+//        }
 		initAll();
-		newSpace = new CurrentSpace(space, 0, 0, 0);
+		newSpace = new CurrentSpace(space, 0, -1, 0);
 		tempStack.push(newSpace);
 		explored.add(space);
 		sequence.add(newSpace);
@@ -91,12 +134,33 @@ public class MainFile {
 				break;
 			}
 			initAll();
-			newSpace = new CurrentSpace(space, 0, 0, 0);
+			newSpace = new CurrentSpace(space, 0, -1, 0);
 			tempStack.push(newSpace);
 			explored.add(space);
 			sequence.add(newSpace);
-
 		}
+
+		int index = explored.size()-1;
+		//System.out.println("The Following are the routine from GOAL to the STARTING state:");
+		while (true){
+//				int [][]temp = sequence.get(index).curSpace;
+			CurrentSpace tempo = sequence.get(index);
+			final3.add(tempo);
+//				System.out.println(temp[0][0]+ " " + temp[0][1] + " " + temp[0][2]);
+//				System.out.println(temp[1][0]+ " " + temp[1][1] + " " + temp[1][2]);
+//				System.out.println("So far cost: "+sequence.get(index).cost + " Previous ID: "+sequence.get(index).preID + " Current ID: "+ sequence.get(index).ID);
+			if (tempo.preID < 0){
+				break;
+			} else {
+				index = tempo.preID;
+			}
+		}
+		for (int i = final3.size()-1; i >= 0; i--){
+			System.out.println("");
+			System.out.println(final3.get(i).curSpace[0][0]+ " " + final3.get(i).curSpace[0][1] + " " + final3.get(i).curSpace[0][2]);
+			System.out.println(final3.get(i).curSpace[1][0]+ " " + final3.get(i).curSpace[1][1] + " " + final3.get(i).curSpace[1][2]);
+		}
+		System.out.println("The ID stopped and found goal state at depth 3. The cost is: " + (final3.size()-1));
 	}
 
 	//init all of the variables need to execute the search
